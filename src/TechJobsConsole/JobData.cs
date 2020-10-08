@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System;
 
 namespace TechJobsConsole
 {
@@ -48,11 +49,47 @@ namespace TechJobsConsole
             foreach (Dictionary<string, string> row in AllJobs)
             {
                 string aValue = row[column];
+                bool checker = aValue.Contains(value);
+          
 
-                if (aValue.Contains(value))
+                if (checker)
                 {
                     jobs.Add(row);
+                    //return jobs;
+                    //checker = false;
+
                 }
+            }
+
+            return jobs;
+        }
+
+        //create method FindByValue i added this here
+        public static List<Dictionary<string, string>> FindByValue(string value)
+        {
+            LoadData();
+
+            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
+            //KeyValuePair<string, string> allJobs = AllJobs;
+            
+            foreach (Dictionary<string, string> column in AllJobs)
+            {
+                foreach (Dictionary<string, string> row in AllJobs)
+                {
+                    //Dictionary<string, string> column1 = column;
+                    Dictionary<string, string> aValue = row;
+                    //seemed to work better when column was removed behind row
+                    bool checker = aValue.ContainsValue(value);
+                    double check = 0;
+
+                    if (checker && (check == 0))
+                    {
+                        check++;
+                        jobs.Add(row);
+                        
+                    }
+
+                   }
             }
 
             return jobs;
