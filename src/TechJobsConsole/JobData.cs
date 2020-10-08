@@ -80,11 +80,11 @@ namespace TechJobsConsole
                     Dictionary<string, string> aValue = row;
                     //seemed to work better when column was removed behind row
                     bool checker = aValue.ContainsValue(value);
-                    double check = 0;
+                    //double check = 0;
 
-                    if (checker && (check == 0))
+                    if (!checker)
                     {
-                        check++;
+                        //check++;
                         jobs.Add(row);
                         
                     }
