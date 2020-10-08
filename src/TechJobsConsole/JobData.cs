@@ -82,11 +82,13 @@ namespace TechJobsConsole
                     bool checker = aValue.ContainsValue(value);
                     //double check = 0;
 
-                    if (!checker)
+                    if (checker)
                     {
                         //check++;
-                        jobs.Add(row);
-                        
+                        if (!jobs.Contains(row))
+                        {
+                            jobs.Add(row);
+                        }
                     }
 
                    }
