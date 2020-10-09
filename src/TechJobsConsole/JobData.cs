@@ -50,9 +50,12 @@ namespace TechJobsConsole
             {
                 string aValue = row[column];
                 bool checker = aValue.Contains(value);
-          
+                string aValueConverted = row[column].ToLower();
+                //Dictionary<string, string> convertedDictionary = ConvertValuesToLowerCase();
+                string valueConverted = value.ToLower();
+                bool checker2 = aValueConverted.Contains(valueConverted);
 
-                if (checker)
+                if (checker2)
                 {
                     jobs.Add(row);
                     //return jobs;
@@ -81,55 +84,7 @@ namespace TechJobsConsole
             return convertedDictionary;
         }
 
-        /*
-        private static Dictionary<string, string> ConvertKeysToLowerCase(Dictionary<string, string>> dictionaries)
-        {
-            Dictionary<string, string> resultingConvertedDictionaries
-                = new Dictionary<string, string>();
-            //foreach (ILanguage keyLanguage in dictionaries.Keys)
-           // {
-                Dictionary<string, string> convertedDictionary = new Dictionary<string, string>();
-                foreach (string value in dictionaries.Values)
-                {
- 
-                    convertedDictionary.Add("k" , value.ToLower());
-                }
-
-                //resultingConvertedDictionaries.Add(convertedDictionary);
-            }
-           // return convertedDictionary;
-            //return resultingConvertedDictionaries;
-        }
-        /*
-        public static Dictionary<string, string> ConvertValuesToLowerCase(Dictionary<string, string> dictionaries)
-        {
-            // < Dictionary<string, string> > convertedDictionary;
-            IDictionary<ILanguage, IDictionary<string, string>> resultingConvertedDictionaries
-         = new Dictionary<ILanguage, IDictionary<string, string>>();
-            foreach (ILanguage keyLanguage in dictionaries.Keys)
-            {
-                IDictionary<string, string> convertedDictionatry = new Dictionary<string, string>();
-                foreach (string key in dictionaries[keyLanguage].Keys)
-                {
-                    convertedDictionatry.Add(key.ToLower(), dictionaries[keyLanguage][key]);
-                }
-                resultingConvertedDictionaries.Add(keyLanguage, convertedDictionatry);
-            }
-            return resultingConvertedDictionaries;
-            /*
-            List<Dictionary<string, string>> resultingConvertedDictionaries = new List<Dictionary<string, string>>;
-            foreach(Dictionary<string, string> dictionaree in dictionaries)
-            {
-                Dictionary<string, string> convertedDictionary = new Dictionary<string, string>();
-                foreach (string value in dictionaree.Values)
-                {
-                    convertedDictionary.Add(dictionaree, value.ToLower());
-                }
-                resultingConvertedDictionaries.Add(convertedDictionary);
-            }
-            return resultingConvertedDictionaries;*/
-
-
+     
         //create method FindByValue i added this here
         public static List<Dictionary<string, string>> FindByValue(string value)
         {
