@@ -68,12 +68,17 @@ namespace TechJobsConsole
 
         public static Dictionary<string, string> ConvertValuesToLowerCase(Dictionary<string, string> dictionary)
         {
+            Dictionary<string, string> convertedDictionary = new Dictionary<string, string>();
+            double i = 0;
             foreach (string value in dictionary.Values)
             {
                 string converted = value.ToLower();
-
+                
+                
+                convertedDictionary.Add("k"+i, converted);
+                i++;
             }
-            return dictionary;
+            return convertedDictionary;
         }
 
         /*
