@@ -64,6 +64,67 @@ namespace TechJobsConsole
             return jobs;
         }
 
+        //Convert the values to lowercase method:
+
+        public static Dictionary<string, string> ConvertValuesToLowerCase(Dictionary<string, string> dictionary)
+        {
+            foreach (string value in dictionary.Values)
+            {
+                string converted = value.ToLower();
+
+            }
+            return dictionary;
+        }
+
+        /*
+        private static Dictionary<string, string> ConvertKeysToLowerCase(Dictionary<string, string>> dictionaries)
+        {
+            Dictionary<string, string> resultingConvertedDictionaries
+                = new Dictionary<string, string>();
+            //foreach (ILanguage keyLanguage in dictionaries.Keys)
+           // {
+                Dictionary<string, string> convertedDictionary = new Dictionary<string, string>();
+                foreach (string value in dictionaries.Values)
+                {
+ 
+                    convertedDictionary.Add("k" , value.ToLower());
+                }
+
+                //resultingConvertedDictionaries.Add(convertedDictionary);
+            }
+           // return convertedDictionary;
+            //return resultingConvertedDictionaries;
+        }
+        /*
+        public static Dictionary<string, string> ConvertValuesToLowerCase(Dictionary<string, string> dictionaries)
+        {
+            // < Dictionary<string, string> > convertedDictionary;
+            IDictionary<ILanguage, IDictionary<string, string>> resultingConvertedDictionaries
+         = new Dictionary<ILanguage, IDictionary<string, string>>();
+            foreach (ILanguage keyLanguage in dictionaries.Keys)
+            {
+                IDictionary<string, string> convertedDictionatry = new Dictionary<string, string>();
+                foreach (string key in dictionaries[keyLanguage].Keys)
+                {
+                    convertedDictionatry.Add(key.ToLower(), dictionaries[keyLanguage][key]);
+                }
+                resultingConvertedDictionaries.Add(keyLanguage, convertedDictionatry);
+            }
+            return resultingConvertedDictionaries;
+            /*
+            List<Dictionary<string, string>> resultingConvertedDictionaries = new List<Dictionary<string, string>>;
+            foreach(Dictionary<string, string> dictionaree in dictionaries)
+            {
+                Dictionary<string, string> convertedDictionary = new Dictionary<string, string>();
+                foreach (string value in dictionaree.Values)
+                {
+                    convertedDictionary.Add(dictionaree, value.ToLower());
+                }
+                resultingConvertedDictionaries.Add(convertedDictionary);
+            }
+            return resultingConvertedDictionaries;*/
+
+
         //create method FindByValue i added this here
         public static List<Dictionary<string, string>> FindByValue(string value)
         {
@@ -78,15 +139,22 @@ namespace TechJobsConsole
                 {
                     //Dictionary<string, string> column1 = column;
                     Dictionary<string, string> aValue = row;
+                    
                     //seemed to work better when column was removed behind row
-                    bool checker = aValue.ContainsValue(value);
-                    //double check = 0;
 
-                    if (checker)
+                    bool checker = aValue.ContainsValue(value);
+                    //Dictionary<string, string> converted = dict((k, value.ToLower()) for k, value in )
+                    //double check = 0;
+                    Dictionary<string, string> convertedDictionary = ConvertValuesToLowerCase(row);
+                    string valueConverted = value.ToLower();
+                    bool checker2 = convertedDictionary.ContainsValue(valueConverted);
+
+                    if (checker2)
                     {
                         //check++;
                         if (!jobs.Contains(row))
                         {
+                            //Console.WriteLine(valueConverted);
                             jobs.Add(row);
                         }
                     }
