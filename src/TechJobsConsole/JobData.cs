@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System;
+using System.Linq;
 
 namespace TechJobsConsole
 {
@@ -91,36 +92,33 @@ namespace TechJobsConsole
             LoadData();
 
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
-            //KeyValuePair<string, string> allJobs = AllJobs;
             
-            foreach (Dictionary<string, string> column in AllJobs)
-            {
-                foreach (Dictionary<string, string> row in AllJobs)
+                foreach (Dictionary<string, string> job in AllJobs)
                 {
-                    //Dictionary<string, string> column1 = column;
-                    Dictionary<string, string> aValue = row;
                     
-                    //seemed to work better when column was removed behind row
+                    Dictionary<string, string> aValue = job;
 
-                    bool checker = aValue.ContainsValue(value);
+                        bool checker = aValue.ContainsValue(value);
+                    
                     //Dictionary<string, string> converted = dict((k, value.ToLower()) for k, value in )
                     //double check = 0;
-                    Dictionary<string, string> convertedDictionary = ConvertValuesToLowerCase(row);
+                    Dictionary<string, string> convertedDictionary = ConvertValuesToLowerCase(job);
                     string valueConverted = value.ToLower();
                     bool checker2 = convertedDictionary.ContainsValue(valueConverted);
+                    bool checker3 = convertedDictionary.Values.Any(v => v.Contains(valueConverted));
 
-                    if (checker2)
+                    if (checker3)
                     {
                         //check++;
-                        if (!jobs.Contains(row))
+                        if (!jobs.Contains(job))
                         {
                             //Console.WriteLine(valueConverted);
-                            jobs.Add(row);
+                            jobs.Add(job);
                         }
                     }
 
                    }
-            }
+            
 
             return jobs;
         }
